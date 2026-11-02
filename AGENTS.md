@@ -138,6 +138,14 @@ The Agent must not convert an unconfirmed proposal into a permanent project rule
 
 Adapt this workflow to the size and risk of each task.
 
+### Toolchain
+
+Use the versions pinned by the project's `mise.toml`; do not install, switch, or rely on global versions of Go, Node.js, pnpm, or Typst.
+
+- Run project commands from the project root so mise resolves the pinned versions.
+- Check `mise ls --current` before version-sensitive work, and do not edit `mise.toml` without owner approval.
+- `go.set_gobin = false` means mise does not override Go's default `GOBIN`. Do not add tool binaries to the repository.
+
 ### 1. Understand
 
 - Read the relevant parts of `README.md` and `AGENTS.md`.
@@ -338,11 +346,12 @@ Follow the confirmed Astro-based website direction.
 
 - Use Astro components for pages, layouts, and static content presentation.
 - Use Astro Content Collections for structured documentation and blog content.
+- Serve documentation from `/docs/` and blog content from `/blog/`, with one Markdown entry per file in `src/content/docs/` and `src/content/blog/`; keep front matter validated by the collection schemas.
 - Use Tailwind CSS for styling.
 - Use shadcn/ui components selectively and customize them where needed.
 - Introduce React or other client-side frameworks only when actual interaction requirements justify them.
 
-Do not turn every page into a client-side application.
+Do not turn every page into a client-side application. Do not introduce a CMS, site search, or locale-prefixed routing before the corresponding content and requirements exist.
 
 ### Component Design
 

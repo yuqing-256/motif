@@ -147,6 +147,22 @@ The project will define its own content models, navigation, page layouts, compon
 
 Existing templates and design systems may be studied as references, but a ready-made website template will not be used as the final Motif website.
 
+The initial URL structure is:
+
+| URL | Content |
+| --- | --- |
+| `/` | Website pages, authored directly in `src/pages/` |
+| `/docs/` | Documentation index |
+| `/docs/<slug>/` | A documentation entry |
+| `/blog/` | Blog index |
+| `/blog/<slug>/` | A blog post |
+
+Documentation and blog entries are Markdown files in `src/content/docs/` and `src/content/blog/`. Astro Content Collections validate their front matter at build time: documentation entries declare `title`, `description`, and an optional `order`; blog entries declare `title`, `description`, `pubDate`, optional `tags`, and an optional `draft` flag. Page routes are generated from the entries, and an invalid entry fails the build.
+
+Images and static files follow Astro conventions. Content images live beside the Markdown file that uses them and are processed by Astro; shared UI assets belong in `src/assets/`; `public/` is reserved for files that must be served at a stable path unchanged, such as favicons and downloads.
+
+Content is authored in English initially. The layout is language-aware and the site declares English as its default language, but locale-prefixed routes and translated content are deferred to P1 rather than implemented in the current foundation.
+
 ## Design System Architecture
 
 Motif will be developed incrementally through the following layers:
@@ -193,6 +209,16 @@ Style Dictionary is not responsible for defining Motif's design principles or to
 **Go and Fyne** are the planned direction for exploring desktop applications.
 
 Cross-platform development is an adaptation of design intent, not a direct port of web components.
+
+### Toolchain
+
+The project pins its toolchain with `mise.toml`: Go 1.27.3, Node.js 24.22.1, pnpm 12.15.0, and Typst 0.15.1.
+
+- `mise install` installs the pinned versions, and `mise ls --current` shows the active ones.
+- Run project commands from the project root so mise resolves the pinned versions.
+- `go.set_gobin = false` keeps Go's default `GOBIN` (`$GOPATH/bin`); mise does not override it.
+
+pnpm is the package manager, and its version is also recorded in `package.json` through the `packageManager` field.
 
 ## Development Roadmap
 
@@ -317,7 +343,7 @@ See:
 
 **Current phase: P0 — Development Foundation.**
 
-The development environment has been audited, and a minimal Astro foundation now exists: Astro 7 with TypeScript, Tailwind CSS, a base layout with initial pages, and a Playwright smoke-test baseline covering desktop and mobile.
+The development environment has been audited, and a minimal Astro foundation now exists: Astro 7 with TypeScript, Tailwind CSS, a shared layout with primary navigation, and documentation and blog pages generated from Astro Content Collections with schema-validated front matter. A Playwright smoke-test baseline covers the generated pages in Chromium, Firefox, and WebKit.
 
 The immediate priority is to verify the deployment path, then begin P1 — Real Web Presence.
 
