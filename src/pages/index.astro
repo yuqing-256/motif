@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const approaches = [
+  {
+    name: 'Hugin',
+    summary: 'Editorial expression, presentation, reading, and communication.',
+    concerns: [
+      'Content hierarchy and narrative structure',
+      'Typography and reading experience',
+      'Visual emphasis and information presentation',
+    ],
+  },
+  {
+    name: 'Munin',
+    summary: 'Content creation, organization, management, and operation.',
+    concerns: [
+      'Information architecture and navigation',
+      'Workspaces and operational workflows',
+      'Controls and interaction states',
+    ],
+  },
+];
+
+const themes = ['Hugin', 'Munin', 'Hugin Dark', 'Munin Light'];
+---
+
+<BaseLayout title="Motif — a cross-media, cross-platform design system">
+  <main class="mx-auto max-w-3xl px-6 py-20 sm:py-28">
+    <header>
+      <p class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+        P0 — Development Foundation
+      </p>
+      <h1 class="mt-5 text-4xl font-semibold tracking-tight sm:text-6xl">Motif</h1>
+      <p class="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-600 sm:text-xl">
+        A design system for creating, organizing, expressing, presenting, and distributing
+        content — across media and platforms, without forcing every platform into the same
+        implementation model.
+      </p>
+    </header>
+
+    <section class="mt-16 sm:mt-20" aria-labelledby="approaches-heading">
+      <h2 id="approaches-heading" class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+        Two approaches
+      </h2>
+      <div class="mt-6 grid gap-8 sm:grid-cols-2">
+        {
+          approaches.map((approach) => (
+            <article>
+              <h3 class="text-xl font-semibold tracking-tight">{approach.name}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-neutral-600">{approach.summary}</p>
+              <ul class="mt-4 space-y-1 text-sm text-neutral-600">
+                {approach.concerns.map((concern) => (
+                  <li>{concern}</li>
+                ))}
+              </ul>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="mt-16 sm:mt-20" aria-labelledby="themes-heading">
+      <h2 id="themes-heading" class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+        Initial themes
+      </h2>
+      <ul class="mt-6 flex flex-wrap gap-2">
+        {
+          themes.map((theme) => (
+            <li class="rounded-full border border-neutral-200 px-3 py-1 text-sm text-neutral-700">
+              {theme}
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section class="mt-16 sm:mt-20" aria-labelledby="status-heading">
+      <h2 id="status-heading" class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+        Status
+      </h2>
+      <p class="mt-6 max-w-2xl text-sm leading-relaxed text-neutral-600">
+        The public website, documentation, and blog will be established in P1 — Real Web
+        Presence. This page is the minimal P0 foundation: Astro, TypeScript, Tailwind CSS, and a
+        browser verification baseline.
+      </p>
+    </section>
+
+    <footer class="mt-20 border-t border-neutral-200 pt-8 text-sm text-neutral-500">
+      <p>
+        <a class="underline underline-offset-4 hover:text-neutral-900" href="https://github.com/yuqing-256/motif">
+          Motif on GitHub
+        </a>
+      </p>
+    </footer>
+  </main>
+</BaseLayout>
