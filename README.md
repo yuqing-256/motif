@@ -317,6 +317,8 @@ See:
 
 **Current phase: P0 — Development Foundation.**
 
-The immediate priority is to audit the current DeepSeek Harness environment, establish the minimum development toolchain, and prepare the project for reliable incremental development.
+The development environment has been audited, and a minimal Astro foundation now exists: Astro 7 with TypeScript, Tailwind CSS, a base layout with initial pages, and a Playwright smoke-test baseline covering desktop and mobile.
+
+The immediate priority is to verify the deployment path, then begin P1 — Real Web Presence.
 
 Future phases are planning directions, not authorization to implement their infrastructure prematurely.
