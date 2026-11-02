@@ -20,6 +20,11 @@ pnpm-debug.log*
 # TypeScript incremental artifacts
 *.tsbuildinfo
 
+# Browser test artifacts
+test-results/
+playwright-report/
+blob-report/
+
 # OS and editor noise
 .DS_Store
 Thumbs.db
