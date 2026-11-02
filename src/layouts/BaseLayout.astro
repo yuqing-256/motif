@@ -12,6 +12,14 @@ const {
   description = 'Motif — a cross-media, cross-platform design system.',
   lang = 'en',
 } = Astro.props;
+
+const pathname = Astro.url.pathname;
+const navItems = [
+  { href: '/docs/', label: 'Docs' },
+  { href: '/blog/', label: 'Blog' },
+];
+
+const isCurrent = (href: string) => pathname === href || pathname.startsWith(href);
 ---
 
 <!doctype html>
@@ -23,7 +31,56 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
   </head>
-  <body class="bg-white text-neutral-900 antialiased">
-    <slot />
+  <body class="flex min-h-dvh flex-col bg-white text-neutral-900 antialiased">
+    <header class="border-b border-neutral-200">
+      <nav
+        class="mx-auto flex max-w-5xl flex-wrap items-baseline justify-between gap-x-6 gap-y-2 px-6 py-5"
+        aria-label="Primary"
+      >
+        <a href="/" class="text-sm font-semibold tracking-tight">Motif</a>
+        <ul class="flex items-center gap-5 text-sm text-neutral-600">
+          {
+            navItems.map(({ href, label }) => (
+              <li>
+                <a
+                  href={href}
+                  aria-current={isCurrent(href) ? 'page' : undefined}
+                  class:list={[
+                    'hover:text-neutral-900',
+                    isCurrent(href) && 'font-medium text-neutral-900',
+                  ]}
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a
+              href="https://github.com/yuqing-256/motif"
+              class="underline underline-offset-4 hover:text-neutral-900"
+            >
+              GitHub
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="flex-1">
+      <slot />
+    </main>
+    <footer class="border-t border-neutral-200">
+      <div
+        class="mx-auto flex max-w-5xl flex-col gap-2 px-6 py-8 text-sm text-neutral-500 sm:flex-row sm:items-center sm:justify-between"
+      >
+        <p>Motif — a cross-media, cross-platform design system.</p>
+        <a
+          href="https://github.com/yuqing-256/motif"
+          class="underline underline-offset-4 hover:text-neutral-900"
+        >
+          Motif on GitHub
+        </a>
+      </div>
+    </footer>
   </body>
 </html>
