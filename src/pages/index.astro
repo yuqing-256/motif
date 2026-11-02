@@ -22,13 +22,22 @@ const approaches = [
   },
 ];
 
-const themes = ['Hugin', 'Munin', 'Hugin Dark', 'Munin Light'];
+const appearances = [
+  {
+    name: 'Motif',
+    summary: 'The light appearance and initial visual foundation.',
+  },
+  {
+    name: 'Motif Dark',
+    summary: 'An independently designed dark appearance, not a color inversion.',
+  },
+];
 
 const areas = [
   {
     href: '/docs/',
     title: 'Documentation',
-    summary: 'Principles, foundations, themes, and implementation guidance.',
+    summary: 'Principles, design approaches, appearance modes, and implementation guidance.',
   },
   {
     href: '/blog/',
@@ -76,15 +85,23 @@ const areas = [
       </div>
     </section>
 
-    <section class="mt-16 sm:mt-20" aria-labelledby="themes-heading">
-      <h2 id="themes-heading" class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
-        Initial themes
+    <section class="mt-16 sm:mt-20" aria-labelledby="appearances-heading">
+      <h2
+        id="appearances-heading"
+        class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500"
+      >
+        Appearance modes
       </h2>
-      <ul class="mt-6 flex flex-wrap gap-2">
+      <p class="mt-6 max-w-2xl text-sm leading-relaxed text-neutral-600">
+        Motif and Motif Dark are two appearance modes of the same design system. The design
+        approaches are independent of the appearance; both work coherently in both modes.
+      </p>
+      <ul class="mt-6 space-y-2 text-sm">
         {
-          themes.map((theme) => (
-            <li class="rounded-full border border-neutral-200 px-3 py-1 text-sm text-neutral-700">
-              {theme}
+          appearances.map((appearance) => (
+            <li>
+              <span class="font-medium text-neutral-900">{appearance.name}</span>
+              <span class="text-neutral-600"> — {appearance.summary}</span>
             </li>
           ))
         }

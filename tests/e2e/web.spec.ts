@@ -11,7 +11,12 @@ test.describe('home page', () => {
     await expect(page.getByRole('heading', { level: 2, name: 'Two approaches' })).toBeVisible();
     await expect(page.getByRole('heading', { level: 3, name: 'Hugin' })).toBeVisible();
     await expect(page.getByRole('heading', { level: 3, name: 'Munin' })).toBeVisible();
-    await expect(page.getByRole('heading', { level: 2, name: 'Initial themes' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 2, name: 'Appearance modes' })).toBeVisible();
+    await expect(page.locator('section[aria-labelledby="appearances-heading"]')).toContainText(
+      'Motif Dark',
+    );
+    await expect(page.locator('body')).not.toContainText('Hugin Dark');
+    await expect(page.locator('body')).not.toContainText('Munin Light');
     await expect(page.getByRole('link', { name: 'Motif on GitHub' })).toBeVisible();
   });
 
