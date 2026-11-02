@@ -1,0 +1,14 @@
+# Normalize all text files to LF in the repository and in checkouts,
+# independent of the local core.autocrlf setting.
+* text=auto eol=lf
+
+# Binary assets are never converted.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.woff binary
+*.woff2 binary
