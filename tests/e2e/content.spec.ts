@@ -7,7 +7,8 @@ test.describe('documentation', () => {
     expect(response?.status()).toBe(200);
     await expect(page.getByRole('heading', { level: 1, name: 'Documentation' })).toBeVisible();
     await expect(page.getByRole('link', { name: /Getting started/ })).toBeVisible();
-    await expect(page.getByRole('link', { name: /^Themes/ })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Design approaches/ })).toBeVisible();
+    await expect(page.getByRole('link', { name: /Appearance modes/ })).toBeVisible();
   });
 
   test('renders a documentation entry from its collection', async ({ page }) => {
@@ -25,11 +26,27 @@ test.describe('documentation', () => {
   });
 
   test('renders markdown headings and lists inside a documentation entry', async ({ page }) => {
-    await page.goto('/docs/themes/');
+    await page.goto('/docs/design-approaches/');
 
-    await expect(page.getByRole('heading', { level: 1, name: 'Themes' })).toBeVisible();
-    await expect(page.getByRole('heading', { level: 2, name: 'Hugin Dark' })).toBeVisible();
-    await expect(page.locator('.prose li')).toHaveCount(6);
+    await expect(
+      page.getByRole('heading', { level: 1, name: 'Design approaches' }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole('heading', { level: 2, name: 'Hugin — Editorial Design Approach' }),
+    ).toBeVisible();
+    await expect(
+      page.getByRole('heading', { level: 2, name: 'Munin — Functional Design Approach' }),
+    ).toBeVisible();
+    await expect(page.locator('.prose li')).toHaveCount(14);
+  });
+
+  test('separates appearance modes from the design approaches', async ({ page }) => {
+    const response = await page.goto('/docs/appearance-modes/');
+
+    expect(response?.status()).toBe(200);
+    await expect(page.getByRole('heading', { level: 1, name: 'Appearance modes' })).toBeVisible();
+    await expect(page.locator('.prose')).toContainText('not produced through simple color inversion');
+    await expect(page.locator('.prose')).toContainText('Both Hugin and Munin must work coherently');
   });
 });
 

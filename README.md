@@ -73,7 +73,7 @@ Their relative emphasis depends on the purpose of the experience. An editorial p
 
 Neither approach is restricted to a particular platform or appearance mode.
 
-### Theme System
+### Appearance Modes
 
 Motif is one unified design system with two appearance modes:
 
@@ -368,7 +368,7 @@ See:
 
 **Current phase: P0 — Development Foundation.**
 
-The development environment has been audited, and a minimal Astro foundation now exists: Astro 7 with TypeScript, Tailwind CSS, a shared layout with primary navigation, and documentation and blog pages generated from Astro Content Collections with schema-validated front matter. A Playwright smoke-test baseline covers the generated pages in Chromium, Firefox, and WebKit.
+The development environment has been audited, and a minimal Astro foundation now exists: Astro 7 with TypeScript, Tailwind CSS, a shared layout with primary navigation, and documentation and blog pages generated from Astro Content Collections with schema-validated front matter. The documentation covers the Hugin and Munin design approaches and the Motif and Motif Dark appearance modes. A Playwright smoke-test baseline covers the generated pages in Chromium, Firefox, and WebKit.
 
 The immediate priority is to verify the deployment path, then begin P1 — Real Web Presence.
 
