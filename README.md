@@ -180,6 +180,8 @@ Images and static files follow Astro conventions. Content images live beside the
 
 Content is authored in English initially. The layout is language-aware and the site declares English as its default language, but locale-prefixed routes and translated content are deferred to a later stage.
 
+A multilingual typography specimen in the documentation coordinates English, Chinese, and Japanese text on one reading surface, with per-script language attributes and CJK-aware line height. It validates typography coordination; it does not introduce localized routes or translated content.
+
 ## Design System Architecture
 
 Motif will be developed incrementally through the following layers:
@@ -368,8 +370,8 @@ See:
 
 **Current phase: P0 — Development Foundation.**
 
-The development environment has been audited, and a minimal Astro foundation now exists: Astro 7 with TypeScript, Tailwind CSS, a shared layout with primary navigation, and documentation and blog pages generated from Astro Content Collections with schema-validated front matter. The documentation covers the Hugin and Munin design approaches and the Motif and Motif Dark appearance modes. A Playwright smoke-test baseline covers the generated pages in Chromium, Firefox, and WebKit.
+The development environment has been audited, and a minimal Astro foundation now exists: Astro 7 with TypeScript, Tailwind CSS, a shared layout with primary navigation, and documentation and blog pages generated from Astro Content Collections with schema-validated front matter. The documentation covers the Hugin and Munin design approaches and the Motif and Motif Dark appearance modes, and includes a multilingual typography specimen for English, Chinese, and Japanese. A Playwright smoke-test baseline covers the generated pages in Chromium, Firefox, and WebKit.
 
-The immediate priority is to verify the deployment path, then begin P1 — Real Web Presence.
+The next steps are to coordinate multilingual typography, build the first full website surface, and verify the deployment path before P1 — Real Web Presence.
 
 Future phases are planning directions, not authorization to implement their infrastructure prematurely.
