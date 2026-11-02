@@ -23,10 +23,23 @@ const approaches = [
 ];
 
 const themes = ['Hugin', 'Munin', 'Hugin Dark', 'Munin Light'];
+
+const areas = [
+  {
+    href: '/docs/',
+    title: 'Documentation',
+    summary: 'Principles, foundations, themes, and implementation guidance.',
+  },
+  {
+    href: '/blog/',
+    title: 'Blog',
+    summary: 'Design research, technical practice, and project updates.',
+  },
+];
 ---
 
 <BaseLayout title="Motif — a cross-media, cross-platform design system">
-  <main class="mx-auto max-w-3xl px-6 py-20 sm:py-28">
+  <div class="mx-auto max-w-3xl px-6 py-20 sm:py-28">
     <header>
       <p class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
         P0 — Development Foundation
@@ -40,7 +53,10 @@ const themes = ['Hugin', 'Munin', 'Hugin Dark', 'Munin Light'];
     </header>
 
     <section class="mt-16 sm:mt-20" aria-labelledby="approaches-heading">
-      <h2 id="approaches-heading" class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+      <h2
+        id="approaches-heading"
+        class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500"
+      >
         Two approaches
       </h2>
       <div class="mt-6 grid gap-8 sm:grid-cols-2">
@@ -75,23 +91,36 @@ const themes = ['Hugin', 'Munin', 'Hugin Dark', 'Munin Light'];
       </ul>
     </section>
 
+    <section class="mt-16 sm:mt-20" aria-labelledby="areas-heading">
+      <h2 id="areas-heading" class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+        Explore
+      </h2>
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
+        {
+          areas.map((area) => (
+            <a
+              href={area.href}
+              class="group rounded-lg border border-neutral-200 p-5 transition-colors hover:border-neutral-400"
+            >
+              <h3 class="text-base font-semibold tracking-tight group-hover:underline">
+                {area.title}
+              </h3>
+              <p class="mt-2 text-sm leading-relaxed text-neutral-600">{area.summary}</p>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
     <section class="mt-16 sm:mt-20" aria-labelledby="status-heading">
       <h2 id="status-heading" class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
         Status
       </h2>
       <p class="mt-6 max-w-2xl text-sm leading-relaxed text-neutral-600">
-        The public website, documentation, and blog will be established in P1 — Real Web
-        Presence. This page is the minimal P0 foundation: Astro, TypeScript, Tailwind CSS, and a
-        browser verification baseline.
+        The website, documentation, and blog are being built inside one Astro project. Documentation
+        and blog pages are now generated from Astro Content Collections; the site is still a P0
+        foundation ahead of P1 — Real Web Presence.
       </p>
     </section>
-
-    <footer class="mt-20 border-t border-neutral-200 pt-8 text-sm text-neutral-500">
-      <p>
-        <a class="underline underline-offset-4 hover:text-neutral-900" href="https://github.com/yuqing-256/motif">
-          Motif on GitHub
-        </a>
-      </p>
-    </footer>
-  </main>
+  </div>
 </BaseLayout>

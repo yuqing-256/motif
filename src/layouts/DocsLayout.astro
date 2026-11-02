@@ -1,0 +1,57 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  title: string;
+  description: string;
+  currentId: string;
+}
+
+const { title, description, currentId } = Astro.props;
+
+const docs = (await getCollection('docs')).sort(
+  (a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title),
+);
+---
+
+<BaseLayout title={`${title} — Docs — Motif`} description={description}>
+  <div
+    class="mx-auto max-w-5xl px-6 py-12 sm:py-16 lg:grid lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-12"
+  >
+    <nav class="mb-10 lg:mb-0" aria-label="Documentation">
+      <p class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">Documentation</p>
+      <ul class="mt-4 space-y-1">
+        {
+          docs.map((doc) => (
+            <li>
+              <a
+                href={`/docs/${doc.id}/`}
+                aria-current={doc.id === currentId ? 'page' : undefined}
+                class:list={[
+                  'block rounded-md px-3 py-2 text-sm',
+                  doc.id === currentId
+                    ? 'bg-neutral-100 font-medium text-neutral-900'
+                    : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900',
+                ]}
+              >
+                {doc.data.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div>
+      <p class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">
+        <a href="/docs/" class="hover:text-neutral-900">Docs</a>
+      </p>
+      <h1 class="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h1>
+      <p class="mt-4 max-w-2xl text-neutral-600">{description}</p>
+      <div class="prose prose-neutral mt-10 max-w-none">
+        <slot />
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog'))
+  .filter((post) => import.meta.env.DEV || !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', {
+    timeZone: 'UTC',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+---
+
+<BaseLayout
+  title="Blog — Motif"
+  description="Design research, technical practice, and development notes from the Motif project."
+>
+  <div class="mx-auto max-w-3xl px-6 py-16 sm:py-20">
+    <p class="text-xs font-medium uppercase tracking-[0.2em] text-neutral-500">Blog</p>
+    <h1 class="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">Blog</h1>
+    <p class="mt-4 max-w-2xl text-neutral-600">
+      Design research, technical practice, development notes, and project updates from Motif.
+    </p>
+
+    <ul class="mt-10 divide-y divide-neutral-200 border-y border-neutral-200">
+      {
+        posts.map((post) => (
+          <li class="py-6">
+            <a href={`/blog/${post.id}/`} class="group block">
+              <p class="text-sm text-neutral-500">
+                <time datetime={post.data.pubDate.toISOString()}>
+                  {formatDate(post.data.pubDate)}
+                </time>
+              </p>
+              <h2 class="mt-1 text-lg font-semibold tracking-tight group-hover:underline">
+                {post.data.title}
+              </h2>
+              <p class="mt-1 text-sm leading-relaxed text-neutral-600">{post.data.description}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>
