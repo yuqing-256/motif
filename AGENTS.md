@@ -12,19 +12,20 @@ Read both files before undertaking work that materially affects project structur
 
 Motif is a cross-media, cross-platform design system.
 
-Its two complementary design approaches are:
+It has one unified design system, two complementary design approaches, and two appearance modes:
 
-- **Hugin** — editorial expression, presentation, reading, and communication.
-- **Munin** — content creation, organization, management, and operation.
+- **Motif** — the light appearance.
+- **Motif Dark** — an independently designed dark appearance derived from Motif.
+- **Hugin — Editorial Design Approach** — content expression, presentation, reading, and communication.
+- **Munin — Functional Design Approach** — content creation, organization, management, and operation.
 
-The initial theme system contains four independent themes:
+Hugin and Munin are complementary approaches, not separate themes, component libraries, or mutually exclusive interface modes. They may coexist within the same product or page.
 
-- Hugin
-- Munin
-- Hugin Dark
-- Munin Light
+Motif and Motif Dark are appearance modes of the same design system. They are not associated exclusively with either Hugin or Munin.
 
-Do not reinterpret these as a multi-dimensional theme matrix or introduce an independent Density dimension.
+Both design approaches must work coherently in both appearance modes.
+
+Do not reintroduce the former four-theme model, including Hugin Dark or Munin Light. Do not introduce an independent Density dimension without a demonstrated requirement and owner approval.
 
 The initial website is a unified Astro project containing the public website, documentation, and blog.
 
@@ -47,6 +48,8 @@ Understand the intended user experience and design purpose before choosing imple
 Do not treat a library's defaults, component catalog, or theme conventions as Motif design decisions.
 
 Existing libraries and systems are implementation resources and references, not authorities over Motif's design direction.
+
+Keep design approaches, appearance modes, and implementation mechanisms conceptually separate.
 
 ### Platform-Appropriate Adaptation
 
@@ -90,9 +93,13 @@ The roadmap in `README.md` provides long-term direction. It does not authorize w
 Treat the following as established project decisions:
 
 - Motif is a cross-media, cross-platform design system.
+- Motif is one unified design system.
 - Hugin and Munin are complementary design approaches.
-- The initial theme system contains Hugin, Munin, Hugin Dark, and Munin Light.
-- No independent Density dimension is defined.
+- Motif and Motif Dark are the light and dark appearance modes of the same design system.
+- Motif Dark is independently designed, not generated through simple color inversion.
+- Both design approaches must work in both appearance modes.
+- Hugin and Munin may coexist within the same product or page.
+- No independent Density dimension is defined in the initial system.
 - The first website is one unified Astro project.
 - The website contains Website, Documentation, and Blog areas.
 - Astro Content Collections manage structured documentation and blog content.
@@ -110,7 +117,7 @@ Do not silently reverse or reinterpret these decisions.
 Ask before making significant decisions that change:
 
 - Project scope or roadmap.
-- Core design philosophy or theme relationships.
+- Core design philosophy or the relationship between Hugin, Munin, Motif, and Motif Dark.
 - Primary technology choices.
 - Repository structure beyond the current task's requirements.
 - Harness configuration or shared Agent capabilities.
@@ -360,10 +367,11 @@ Do not equate imported components with Motif components.
 Before adding or modifying a reusable component, consider:
 
 - Its actual use cases.
-- Whether it expresses Hugin, Munin, or both.
+- Whether it serves Hugin, Munin, or both.
 - Its content and interaction responsibilities.
 - Its states and accessibility.
 - Whether it is genuinely reusable.
+- Whether its behavior and visual presentation remain coherent in both appearance modes.
 
 Avoid building large speculative component catalogs.
 
@@ -376,15 +384,35 @@ When token requirements emerge:
 - Define their semantic purpose.
 - Separate design decisions from implementation-specific output.
 - Avoid encoding accidental implementation details as permanent design rules.
+- Ensure that appearance-specific values do not create separate or conflicting design systems.
 - Evaluate Style Dictionary when multi-platform transformation and distribution become real requirements.
 
-### Themes
+### Design Approaches
 
-Maintain the four independent themes defined in `README.md`.
+Hugin and Munin are complementary design approaches, not themes.
 
-Do not introduce a generic density dimension or automatically derive the two derivative themes through simple color inversion.
+When evaluating or implementing an interface:
 
-Theme implementation must preserve each theme's design purpose and allow independent validation.
+- Identify the content and functional requirements.
+- Determine where Hugin is relevant.
+- Determine where Munin is relevant.
+- Allow both approaches to contribute where appropriate.
+- Do not force every page or component into an exclusive Hugin or Munin classification.
+
+### Appearance Modes
+
+Maintain one unified design system with two appearance modes:
+
+- Motif.
+- Motif Dark.
+
+Motif Dark must be designed and validated independently rather than generated through simple color inversion.
+
+Both Hugin and Munin must work coherently in both appearance modes.
+
+Do not introduce Hugin Dark, Munin Light, or another independent theme derived from a design approach.
+
+Do not add a generic density dimension without an approved requirement.
 
 ### Content and Sources
 
@@ -414,6 +442,7 @@ Where applicable:
 - Check loading, empty, error, and disabled states.
 - Verify keyboard interaction and focus visibility.
 - Check semantic structure and accessibility.
+- Verify both appearance modes when theme-related work is involved.
 
 ### Editorial and Multilingual
 

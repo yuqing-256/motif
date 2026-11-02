@@ -78,7 +78,7 @@ Do not treat a site's visual quality as proof that every implementation or inter
 
 - URL: https://www.wbw.ch/
 - Category: Architecture magazine.
-- Purpose: Professional editorial design, image and text relationships, restrained visual language.
+- Purpose: Professional editorial design, image and text relationships, and restrained visual language.
 - Phase: P1–P3.
 - Status: Reference.
 
@@ -227,7 +227,7 @@ These resources are relevant if Motif develops substantial workflows for histori
 
 - URL: https://carbondesignsystem.com/
 - Category: Enterprise design system.
-- Purpose: Foundations, components, patterns, data visualization, and design-system documentation.
+- Purpose: Foundations, components, patterns, data visualization, and system governance.
 - Phase: P1–P3.
 - Status: Reference.
 
@@ -365,7 +365,7 @@ Verify current documentation and implementation before relying on version-sensit
 #### Tailwind CSS
 
 - Documentation: https://tailwindcss.com/docs
-- Purpose: Styling, layout, responsive design, and theme implementation.
+- Purpose: Styling, layout, responsive design, and appearance-mode implementation.
 - Phase: P0–P3.
 - Status: Adopted.
 
@@ -374,7 +374,7 @@ Verify current documentation and implementation before relying on version-sensit
 - Documentation: https://ui.shadcn.com/docs
 - Theming: https://ui.shadcn.com/docs/theming
 - Astro integration: https://ui.shadcn.com/docs/installation/astro
-- Purpose: Customizable component implementations and theme integration.
+- Purpose: Customizable component implementations and appearance-mode integration.
 - Phase: P0–P3.
 - Status: Adopted as an implementation resource, not as Motif's design authority.
 
@@ -512,14 +512,14 @@ Evaluate a Skill by:
 
 ### Skill Categories by Phase
 
-| Phase | Skill area to investigate                                                                                                                        |
-| ----- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| P0    | Astro development, Tailwind CSS, Git, accessibility, browser QA                                                                                  |
-| P1    | Content engineering, editorial web design, content design, SEO, component documentation                                                          |
-| P2    | Design token engineering, editorial reading design, functional interface review, multilingual typography, font engineering, internationalization |
-| P3    | Component validation, accessibility review, browser QA, design review                                                                            |
-| P4    | Cross-platform adaptation, Remotion, Typst, Fyne                                                                                                 |
-| P5    | Release engineering, documentation engineering, distribution                                                                                     |
+| Phase | Skill area to investigate                                                                                                                                                     |
+| ----- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| P0    | Astro development, Tailwind CSS, Git, accessibility, browser QA                                                                                                               |
+| P1    | Content engineering, editorial web design, content design, SEO, component documentation                                                                                       |
+| P2    | Design token engineering, editorial reading design, functional interface review, multilingual typography, font engineering, internationalization, appearance-mode consistency |
+| P3    | Component validation, accessibility review, browser QA, design review                                                                                                         |
+| P4    | Cross-platform adaptation, Remotion, Typst, Fyne                                                                                                                              |
+| P5    | Release engineering, documentation engineering, distribution                                                                                                                  |
 
 ### Motif-Specific Skill Candidates
 
@@ -528,11 +528,13 @@ Create these only when repeated work demonstrates a need and existing Skills are
 - Editorial reading review.
 - Hugin design review.
 - Munin functional interface review.
-- Theme consistency review.
+- Appearance-mode consistency review.
 - Documentary provenance review.
 - Multilingual typography review.
 - Cross-platform design adaptation.
 - Component and pattern documentation review.
+
+Hugin and Munin review methods should be complementary. They must not assume that each approach corresponds to a separate theme.
 
 Do not create a separate Skill for every design principle. Stable project knowledge belongs in project documentation; Skills should describe reusable ways of performing work.
 
@@ -661,6 +663,7 @@ These are future candidates, not current requirements.
 | Content publishing        | Validate and publish structured content              | P1                      |
 | Component validation      | Build, inspect, and test components                  | P2–P3                   |
 | Design review             | Evaluate Hugin and Munin design decisions            | P2                      |
+| Appearance-mode review    | Verify Motif and Motif Dark consistency              | P2                      |
 | Multilingual review       | Inspect language and typography behavior             | P2–P3                   |
 | Cross-platform adaptation | Evaluate and implement platform-specific adaptations | P4                      |
 | Release preparation       | Verify and prepare a release                         | P5                      |

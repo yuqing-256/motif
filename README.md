@@ -2,7 +2,17 @@
 
 Motif is a cross-media, cross-platform design system for creating, organizing, expressing, presenting, and distributing content.
 
-Motif aims to establish a coherent design language and set of design principles that can adapt to different media and platforms without forcing every platform into the same implementation model.
+It establishes a coherent design language and set of design principles that adapt to different media and platforms without forcing every platform into the same implementation model.
+
+Motif combines two complementary design approaches within one unified design system:
+
+- **Hugin — Editorial Design Approach**, focused on content expression, presentation, reading, and communication.
+- **Munin — Functional Design Approach**, focused on content creation, organization, management, and operation.
+
+Motif supports two appearance modes:
+
+- **Motif** — the light appearance.
+- **Motif Dark** — an independently designed dark appearance derived from the same design system.
 
 The project develops its design system through real products and practical use cases, beginning with a production website and gradually expanding into motion, publishing, and desktop applications.
 
@@ -23,11 +33,9 @@ Its central concern is consistency of design intent, not uniformity of implement
 
 ## Design Philosophy
 
-### Hugin
+### Hugin — Editorial Design Approach
 
-Hugin is Motif's editorial design approach.
-
-It focuses on content expression, presentation, reading, and communication.
+Hugin focuses on content expression, presentation, reading, and communication.
 
 Its primary concerns include:
 
@@ -38,11 +46,11 @@ Its primary concerns include:
 - Page composition and reading rhythm.
 - Editorial presentation and distribution.
 
-### Munin
+Hugin guides how content is expressed and experienced.
 
-Munin is Motif's functional design approach.
+### Munin — Functional Design Approach
 
-It focuses on content creation, organization, management, and operation.
+Munin focuses on content creation, organization, management, and operation.
 
 Its primary concerns include:
 
@@ -53,24 +61,32 @@ Its primary concerns include:
 - Feedback and system status.
 - Task efficiency and functional clarity.
 
-Hugin and Munin are complementary design approaches within Motif. They are not separate component libraries or mutually exclusive interface modes. Both may contribute to the same product or page.
+Munin guides how users interact with information and accomplish tasks.
+
+### Relationship Between Hugin and Munin
+
+Hugin and Munin are complementary design approaches within Motif.
+
+They are not separate themes, component libraries, or mutually exclusive interface modes. Both may contribute to the same product, page, or interface.
+
+Their relative emphasis depends on the purpose of the experience. An editorial page may rely primarily on Hugin while using Munin for navigation and interaction. A functional workspace may rely primarily on Munin while using Hugin to present content clearly.
+
+Neither approach is restricted to a particular platform or appearance mode.
 
 ### Theme System
 
-Motif initially defines four independent themes:
+Motif is one unified design system with two appearance modes:
 
-- **Hugin** — the core theme serving Hugin's design goals.
-- **Munin** — the core theme serving Munin's design goals.
-- **Hugin Dark** — an independently designed dark derivative of Hugin.
-- **Munin Light** — an independently designed light derivative of Munin.
+- **Motif** — the light appearance and initial visual foundation.
+- **Motif Dark** — an independently designed dark appearance derived from Motif.
 
-These are four complete themes, not combinations generated from independent density, brightness, or other theme dimensions.
+Motif Dark is not a simple color inversion. It requires its own design decisions, visual adjustments, and validation while preserving the underlying design principles, visual identity, and component semantics of Motif.
 
-Hugin Dark and Munin Light may share principles and selected foundations with their respective parent themes, but each requires its own design decisions and validation.
+The two appearance modes are independent of the Hugin and Munin design approaches.
 
-Hugin and Munin remain design approaches as well as the names of the two core themes. Their conceptual relationship must not be reduced to a simple theme switch.
+Both Hugin and Munin must work coherently in Motif and Motif Dark. The two approaches may also coexist within the same product or page in either appearance mode.
 
-No independent Density dimension is defined in the initial theme system.
+No independent Density dimension is defined in the initial system. Other appearance or presentation dimensions should be introduced only when demonstrated requirements justify them.
 
 ## Initial Design Language
 
@@ -109,7 +125,7 @@ It contains three primary content areas.
 The public-facing website introduces:
 
 - Motif and its goals.
-- Design philosophy and approaches.
+- Design philosophy and design approaches.
 - Initial design language.
 - Project development and progress.
 - Selected examples and demonstrations.
@@ -119,9 +135,10 @@ The public-facing website introduces:
 The documentation system explains:
 
 - Design principles and foundations.
-- Design tokens.
+- Design language and tokens.
 - Components and patterns.
-- Theme specifications.
+- Hugin and Munin design approaches.
+- Motif and Motif Dark appearance specifications.
 - Implementation guidelines.
 - Platform-specific guidance and APIs where applicable.
 
@@ -141,27 +158,27 @@ The website, documentation, and blog share one project and common infrastructure
 
 ### Content Architecture
 
-Astro Content Collections will be used to manage structured documentation and blog content.
+Astro Content Collections manage structured documentation and blog content.
 
-The project will define its own content models, navigation, page layouts, component examples, and documentation experience.
+The project defines its own content models, navigation, page layouts, component examples, and documentation experience.
 
 Existing templates and design systems may be studied as references, but a ready-made website template will not be used as the final Motif website.
 
 The initial URL structure is:
 
-| URL | Content |
-| --- | --- |
-| `/` | Website pages, authored directly in `src/pages/` |
-| `/docs/` | Documentation index |
-| `/docs/<slug>/` | A documentation entry |
-| `/blog/` | Blog index |
-| `/blog/<slug>/` | A blog post |
+| URL             | Content                                          |
+| --------------- | ------------------------------------------------ |
+| `/`             | Website pages, authored directly in `src/pages/` |
+| `/docs/`        | Documentation index                              |
+| `/docs/<slug>/` | A documentation entry                            |
+| `/blog/`        | Blog index                                       |
+| `/blog/<slug>/` | A blog post                                      |
 
 Documentation and blog entries are Markdown files in `src/content/docs/` and `src/content/blog/`. Astro Content Collections validate their front matter at build time: documentation entries declare `title`, `description`, and an optional `order`; blog entries declare `title`, `description`, `pubDate`, optional `tags`, and an optional `draft` flag. Page routes are generated from the entries, and an invalid entry fails the build.
 
 Images and static files follow Astro conventions. Content images live beside the Markdown file that uses them and are processed by Astro; shared UI assets belong in `src/assets/`; `public/` is reserved for files that must be served at a stable path unchanged, such as favicons and downloads.
 
-Content is authored in English initially. The layout is language-aware and the site declares English as its default language, but locale-prefixed routes and translated content are deferred to P1 rather than implemented in the current foundation.
+Content is authored in English initially. The layout is language-aware and the site declares English as its default language, but locale-prefixed routes and translated content are deferred to a later stage.
 
 ## Design System Architecture
 
@@ -173,8 +190,11 @@ Motif will be developed incrementally through the following layers:
 4. **Design Tokens** — structured representations of reusable design decisions.
 5. **Components** — reusable interface elements.
 6. **Patterns** — recurring compositions and interaction structures built from components.
-7. **Theme Guidelines** — the design requirements and behavior of the four themes.
-8. **Platform Adaptations** — implementations that preserve design intent while respecting platform capabilities.
+7. **Design Approaches** — guidance for applying Hugin and Munin, independently or together.
+8. **Appearance Modes** — the design requirements and behavior of Motif and Motif Dark.
+9. **Platform Adaptations** — implementations that preserve design intent while respecting platform capabilities.
+
+These layers describe related aspects of one design system, not separate systems or mandatory implementation packages.
 
 The system should emerge from real requirements. Components, abstractions, and specifications should not be created in bulk before their purpose has been demonstrated.
 
@@ -202,11 +222,11 @@ Style Dictionary is not responsible for defining Motif's design principles or to
 
 ### Publishing
 
-**Typst** is the planned direction for exploring publication and typesetting applications.
+**Typst** is the planned direction for exploring publication and typesetting applications of Motif.
 
 ### Desktop
 
-**Go and Fyne** are the planned direction for exploring desktop applications.
+**Go and Fyne** are the planned direction for exploring desktop applications of Motif.
 
 Cross-platform development is an adaptation of design intent, not a direct port of web components.
 
@@ -266,15 +286,19 @@ Goals:
 
 - Establish and validate design principles.
 - Develop the design language and foundations.
-- Define design tokens.
+- Define design tokens where justified.
 - Develop components and patterns.
-- Specify how Hugin and Munin work together.
-- Design and validate Hugin Dark and Munin Light independently.
+- Specify how Hugin and Munin work independently and together.
+- Establish Motif as the light appearance.
+- Independently design and validate Motif Dark.
+- Verify both design approaches in both appearance modes.
 
 Completion criteria:
 
-- Motif has a practical, documented, and validated foundation.
-- Its themes, components, and patterns have been tested against real website requirements.
+- Motif has a practical, documented, and validated design foundation.
+- Hugin and Munin can be applied coherently, separately or together.
+- Motif and Motif Dark preserve the same underlying design principles while providing appropriate appearance-specific decisions.
+- Components and patterns have been tested against real website requirements.
 
 ### P3 — Web Dogfooding
 
@@ -284,6 +308,7 @@ Goals:
 
 - Apply Motif foundations, tokens, components, and patterns.
 - Validate Hugin and Munin in real page compositions.
+- Validate both appearance modes.
 - Identify gaps and inconsistencies.
 - Feed implementation findings back into the design system.
 
