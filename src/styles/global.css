@@ -1,2 +1,28 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans:
+    system-ui, -apple-system, "Segoe UI", "Noto Sans", "Helvetica Neue", Arial, "Microsoft YaHei",
+    "PingFang SC", "Hiragino Sans", "Yu Gothic", "Noto Sans CJK SC", "Noto Sans CJK JP",
+    sans-serif;
+}
+
+@layer base {
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  :lang(zh),
+  :lang(ja),
+  :lang(ko) {
+    line-break: strict;
+    line-height: 1.85;
+  }
+
+  /* Keep inline CJK terms inside Latin prose on one line. */
+  .prose span[lang] {
+    white-space: nowrap;
+  }
+}
