@@ -1,0 +1,52 @@
+{
+  "name": "motif",
+  "version_identity": "Alpha",
+  "status": "Alpha",
+  "specification_role": "Initial and authoritative project baseline",
+  "language": "English",
+  "initialization_order": [
+    "Next.js App Router with TypeScript, Tailwind CSS, ESLint, pnpm, and @/* alias",
+    "shadcn/ui CLI init in the existing project; select the Sera visual preset and Base UI component base in the interactive prompts",
+    "Fumadocs CLI in the existing Next.js application"
+  ],
+  "initial_component_baseline": "shadcn/ui Sera + Base UI",
+  "final_product": "One Next.js application: website /, general-purpose Documentation /docs, Blog /blog",
+  "roadmap": [
+    "A0 Project Initialization",
+    "A1 Baseline Freeze",
+    "A2 Visual Foundation",
+    "A3 shadcn Adaptation",
+    "A4 Component Validation",
+    "A5 Motif Publishing Website"
+  ],
+  "branch_flow": "features/* -> staging -> main",
+  "testing_model": "Progressive and stage-appropriate; content-shape suites are introduced as publishing surfaces are built",
+  "content_test_suites": [
+    "TS-LONGFORM",
+    "TS-PHOTOGRAPHY",
+    "TS-ARCHIVAL",
+    "TS-VISUAL-DATA"
+  ],
+  "version_history_policy": "Alpha is the sole initial version identity; no prior release or migration history is assumed",
+  "files": [
+    ".gitattributes",
+    ".gitignore",
+    "AGENTS.md",
+    "PACKAGE-MANIFEST.json",
+    "README.md",
+    "ROADMAP.md",
+    "docs/ARCHITECTURE.md",
+    "docs/CHARTER.md",
+    "docs/content/CONTENT-MODEL.md",
+    "docs/design/COMPOSITION.md",
+    "docs/design/REFERENCE-CASES.md",
+    "docs/design/VISUAL-LANGUAGE.md",
+    "docs/governance/DECISIONS.md",
+    "docs/governance/GIT-WORKFLOW.md",
+    "docs/governance/RESOURCES.md",
+    "docs/system/IMPLEMENTATION.md",
+    "docs/system/QUALITY.md",
+    "docs/testing/TEST-SUITE.md"
+  ],
+  "display_name": "Motif"
+}

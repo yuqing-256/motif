@@ -1,0 +1,60 @@
+# Dependencies and package-manager caches
+node_modules/
+.pnpm-store/
+.npm/
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Next.js generated type declarations
+next-env.d.ts
+
+# Fumadocs generated source
+.source/
+
+# Deployment / local platform state
+.vercel/
+
+# Local environment files (keep sanitized examples)
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Test and coverage artifacts
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+blob-report/
+
+# Build/tool caches
+.turbo/
+.cache/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local OS/editor files
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Private keys / local certificates
+*.key
+*.p12
+*.pfx
